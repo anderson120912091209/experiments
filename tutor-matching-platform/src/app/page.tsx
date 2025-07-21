@@ -21,18 +21,59 @@ export default function Home() {
         <header className="relative z-10">
           <div className="max-w-6xl mx-auto px-6 py-6">
             <div className="flex justify-between items-center">
-              <Link href="/" className="text-xl font-semibold text-white">家教配對</Link>
+              <Link href="/" className="text-2xl font-black text-white tracking-wide
+                hover:text-white/90 transition-all duration-200 rounded-lg px-3 font-bold
+                py-1 hover:bg-white/10" style={{fontFamily: 'Poppins, sans-serif'}}>
+                嗨補 HiBu 家教網
+              </Link>
               <nav className="hidden md:flex items-center space-x-8">
                 <Link href="/students" className="text-white/80 hover:text-white font-medium transition-colors">瀏覽學生</Link>
                 <Link href="/register" className="text-white/80 hover:text-white font-medium transition-colors">如何運作</Link>
                 <button className="text-white/80 hover:text-white font-medium transition-colors">價格方案</button>
-                <button className="text-white/80 hover:text-white font-medium transition-colors">登入</button>
-                <Link
-                  href="/register"
-                  className="bg-white text-blue-600 px-6 py-2.5 rounded-full font-semibold hover:bg-gray-50 transition-all duration-200 shadow-lg"
-                >
-                  註冊
-                </Link>
+                
+                {/* 登入下拉選單 */}
+                <div className="relative group">
+                  <button className="text-white/80 hover:text-white font-medium transition-colors flex items-center space-x-1">
+                    <span>登入</span>
+                    <svg className="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                    <div className="py-2">
+                      <Link href="/login/parent" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 transition-colors">
+                        <div className="font-medium">家長登入</div>
+                        <div className="text-sm text-gray-500">管理孩子的學習</div>
+                      </Link>
+                      <Link href="/login/teacher" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 transition-colors">
+                        <div className="font-medium">老師登入</div>
+                        <div className="text-sm text-gray-500">查看學生需求</div>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 註冊下拉選單 */}
+                <div className="relative group">
+                  <button className="bg-white text-blue-600 px-6 py-2.5 rounded-full font-semibold hover:bg-gray-50 transition-all duration-200 shadow-lg flex items-center space-x-1">
+                    <span>註冊</span>
+                    <svg className="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                    <div className="py-2">
+                      <Link href="/register" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 transition-colors">
+                        <div className="font-medium">學生/家長註冊</div>
+                        <div className="text-sm text-gray-500">發布學習需求</div>
+                      </Link>
+                      <Link href="/register/teacher" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 transition-colors">
+                        <div className="font-medium">老師註冊</div>
+                        <div className="text-sm text-gray-500">開始接學生</div>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
               </nav>
             </div>
           </div>
@@ -42,28 +83,52 @@ export default function Home() {
         <section className="pt-16 pb-20 relative z-10">
           <div className="max-w-4xl mx-auto px-6 text-center">
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-8">
-              學生優先，不再搜尋
+              全新的家教媒合模式
             </h1>
             
             <div className="space-y-4 mb-12 text-lg md:text-xl text-white/90 max-w-2xl mx-auto">
-              <p>讓老師根據您的學習需求主動找到您。</p>
-              <p>享受個人化、專家匹配的家教課程。</p>
-              <p>每週節省5小時以上的搜尋時間。</p>
+            
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-20">
-              <Link
-                href="/register"
-                className="bg-gray-900 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-800 transition-all duration-200 shadow-xl"
-              >
-                學生 & 家長註冊
-              </Link>
-              <Link
-                href="/students"
-                className="bg-white/20 backdrop-blur-sm border border-white/30 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white/30 transition-all duration-200"
-              >
-                瀏覽學生檔案
-              </Link>
+            {/* 主要CTA區域 */}
+            <div className="flex flex-col lg:flex-row gap-8 justify-center items-center mb-20">
+              {/* 學生/家長卡片 */}
+              <div className="bg-white/10 backdrop-blur-sm border border-white/30 rounded-2xl p-8 text-center max-w-sm">
+                <div className="text-3xl mb-4">👨‍👩‍👧‍👦</div>
+                <h3 className="text-xl font-bold text-white mb-3">我是家長/學生</h3>
+                <p className="text-white/80 mb-6 text-sm">發布學習需求，讓優質老師主動聯繫您</p>
+                <Link
+                  href="/register"
+                  className="block bg-gray-900 text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-800 transition-all duration-200 shadow-xl"
+                >
+                  免費發布需求
+                </Link>
+                <Link
+                  href="/students"
+                  className="block mt-3 text-white/80 hover:text-white text-sm transition-colors"
+                >
+                  查看範例需求 →
+                </Link>
+              </div>
+
+              {/* 老師卡片 */}
+              <div className="bg-white/10 backdrop-blur-sm border border-white/30 rounded-2xl p-8 text-center max-w-sm">
+                <div className="text-3xl mb-4">👨‍🏫</div>
+                <h3 className="text-xl font-bold text-white mb-3">我是老師</h3>
+                <p className="text-white/80 mb-6 text-sm">瀏覽學生需求，主動出擊找到適合的學生</p>
+                <Link
+                  href="/register/teacher"
+                  className="block bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-50 transition-all duration-200 shadow-xl"
+                >
+                  免費加入老師
+                </Link>
+                <Link
+                  href="/students"
+                  className="block mt-3 text-white/80 hover:text-white text-sm transition-colors"
+                >
+                  瀏覽學生需求 →
+                </Link>
+              </div>
             </div>
 
             {/* 示例卡片展示 */}
